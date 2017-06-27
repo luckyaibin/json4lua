@@ -170,7 +170,8 @@ function decode_scanArray(s,startPos)
   assert(string.sub(s,startPos,startPos)=='[','decode_scanArray called but array does not start at position ' .. startPos .. ' in string:\n'..s )
   startPos = startPos + 1
   -- Infinite loop for array elements
-  local index = 0
+  --local index = 0
+  local index = 1--Robin，因为lua table是下表1开始的，也许是作者有意这样用？为了和其他语言交互json？如果纯lua下用json4lua，那么，应该改成1
   repeat
     startPos = decode_scanWhitespace(s,startPos)
     assert(startPos<=stringLen,'JSON String ended unexpectedly scanning array.')
